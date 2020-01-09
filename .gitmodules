@@ -1,3 +1,6 @@
 [submodule "code/bert"]
 	path = code/bert
 	url = https://github.com/google-research/bert.git
+[submodule "code/ALBERT"]
+	path = code/ALBERT
+	url = https://github.com/google-research/ALBERT.git
