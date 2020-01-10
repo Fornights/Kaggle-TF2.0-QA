@@ -44,13 +44,25 @@
 
 ### 标注质量评估
 
-1. post-hoc evaluation of correctness of non-null answers
-2. k-way annotations on a subset of data
+1. post-hoc evaluation of correctness of non-null answers, according to 4 experts
+2. k-way annotations (k=25) on a subset of data, [0, 0.2)，[0.2, 0.4)，[0.4, 0.6)，[0.6, 0.8)，[0.8, 1.0]
 
-样本分布
+### 样本分布形式化
+
 数据由 (q, d, l, s) 四元元组组成，q -> question，d -> document，l -> long answer，s -> short answer。对相应的随机变量 Q, D, L, S。
 
-将四元组分割为三元组 (q, d, l) 和 (q, d, s)。$p(l, q, d) = p(q, d) \mult p(l|q, d)$
+将四元组分割为三元组 (q, d, l) 和 (q, d, s)。每个数据项 (q, d, l) 都是独立同分布从状态空间采样
+
+$$p(l, q, d) = p(q, d) \times p(l|q, d)$$
+
+$p(q, d)$ 是样本分布（问题-文档对的概率质量函数）。
+$p(l|q, d)$ 是条件分布，l 受两种随机因素的影响：随机选择的标注人员和特定标注人员的随机选择
+
+## 基线参考
+
+1. Naive solution, First paragraph, Most paragraph annotation applied on, Closest question TF-IDF.
+2. DocumentQA
+3. DecAtt + DocReader
 
 ## 参考
 1. pytorch(https://github.com/pytorch)
